@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FPC_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FPC_Departments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Remarks" Type="varchar" MaxLength="255" />
+          <Property Name="BasicDep" Type="int" Nullable="false" />
+          <Property Name="ViewOrder" Type="int" />
+          <Property Name="CreateID" Type="int" />
+          <Property Name="Valid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FPC_Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkNo" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PWD" Type="varchar" MaxLength="50" />
+          <Property Name="PWD_ask" Type="bit" />
+          <Property Name="DepID" Type="int" Nullable="false" />
+          <Property Name="JobStatus" Type="int" Nullable="false" />
+          <Property Name="SalaryStatus" Type="int" Nullable="false" />
+          <Property Name="Rights" Type="int" Nullable="false" />
+          <Property Name="WorkTime" Type="datetime" Nullable="false" />
+          <Property Name="TodayBalanceTime" Type="datetime" />
+          <Property Name="TotalBalanceTime" Type="datetime" />
+          <Property Name="BalanceClearDate" Type="datetime" />
+          <Property Name="HomePhone" Type="varchar" MaxLength="16" />
+          <Property Name="LocalPhoneNo" Type="varchar" MaxLength="16" />
+          <Property Name="HomeMobile" Type="varchar" MaxLength="16" />
+          <Property Name="Mobile" Type="varchar" MaxLength="16" />
+          <Property Name="EMail" Type="varchar" MaxLength="120" />
+          <Property Name="HomeEmail" Type="varchar" MaxLength="120" />
+          <Property Name="Remarks" Type="varchar" MaxLength="255" />
+          <Property Name="Valid" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FPC_Employees_FPC_Employees">
+          <End Role="FPC_Employees" Type="Self.FPC_Employees" Multiplicity="1" />
+          <End Role="FPC_Employees1" Type="Self.FPC_Employees" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="FPC_Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FPC_Employees1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FPC_DBModelStoreContainer">
+          <EntitySet Name="FPC_Departments" EntityType="Self.FPC_Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FPC_Employees" EntityType="Self.FPC_Employees" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FPC_Employees_FPC_Employees" Association="Self.FK_FPC_Employees_FPC_Employees">
+            <End Role="FPC_Employees" EntitySet="FPC_Employees" />
+            <End Role="FPC_Employees1" EntitySet="FPC_Employees" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FPC_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FPC_Departments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BasicDep" Type="Int32" Nullable="false" />
+          <Property Name="ViewOrder" Type="Int32" />
+          <Property Name="CreateID" Type="Int32" />
+          <Property Name="Valid" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FPC_Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkNo" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PWD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PWD_ask" Type="Boolean" />
+          <Property Name="DepID" Type="Int32" Nullable="false" />
+          <Property Name="JobStatus" Type="Int32" Nullable="false" />
+          <Property Name="SalaryStatus" Type="Int32" Nullable="false" />
+          <Property Name="Rights" Type="Int32" Nullable="false" />
+          <Property Name="WorkTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TodayBalanceTime" Type="DateTime" Precision="3" />
+          <Property Name="TotalBalanceTime" Type="DateTime" Precision="3" />
+          <Property Name="BalanceClearDate" Type="DateTime" Precision="3" />
+          <Property Name="HomePhone" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="LocalPhoneNo" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="HomeMobile" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="EMail" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="HomeEmail" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+          <Property Name="Remarks" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Valid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="FPC_Employees1" Relationship="Self.FK_FPC_Employees_FPC_Employees" FromRole="FPC_Employees" ToRole="FPC_Employees1" />
+          <NavigationProperty Name="FPC_Employees2" Relationship="Self.FK_FPC_Employees_FPC_Employees" FromRole="FPC_Employees1" ToRole="FPC_Employees" />
+        </EntityType>
+        <Association Name="FK_FPC_Employees_FPC_Employees">
+          <End Role="FPC_Employees" Type="Self.FPC_Employees" Multiplicity="1" />
+          <End Role="FPC_Employees1" Type="Self.FPC_Employees" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="FPC_Employees">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FPC_Employees1">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FPC_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FPC_Departments" EntityType="Self.FPC_Departments" />
+          <EntitySet Name="FPC_Employees" EntityType="Self.FPC_Employees" />
+          <AssociationSet Name="FK_FPC_Employees_FPC_Employees" Association="Self.FK_FPC_Employees_FPC_Employees">
+            <End Role="FPC_Employees" EntitySet="FPC_Employees" />
+            <End Role="FPC_Employees1" EntitySet="FPC_Employees" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FPC_DBModelStoreContainer" CdmEntityContainer="FPC_DBEntities">
+          <EntitySetMapping Name="FPC_Departments">
+            <EntityTypeMapping TypeName="FPC_DBModel.FPC_Departments">
+              <MappingFragment StoreEntitySet="FPC_Departments">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="BasicDep" ColumnName="BasicDep" />
+                <ScalarProperty Name="ViewOrder" ColumnName="ViewOrder" />
+                <ScalarProperty Name="CreateID" ColumnName="CreateID" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FPC_Employees">
+            <EntityTypeMapping TypeName="FPC_DBModel.FPC_Employees">
+              <MappingFragment StoreEntitySet="FPC_Employees">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WorkNo" ColumnName="WorkNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="PWD" ColumnName="PWD" />
+                <ScalarProperty Name="PWD_ask" ColumnName="PWD_ask" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+                <ScalarProperty Name="JobStatus" ColumnName="JobStatus" />
+                <ScalarProperty Name="SalaryStatus" ColumnName="SalaryStatus" />
+                <ScalarProperty Name="Rights" ColumnName="Rights" />
+                <ScalarProperty Name="WorkTime" ColumnName="WorkTime" />
+                <ScalarProperty Name="TodayBalanceTime" ColumnName="TodayBalanceTime" />
+                <ScalarProperty Name="TotalBalanceTime" ColumnName="TotalBalanceTime" />
+                <ScalarProperty Name="BalanceClearDate" ColumnName="BalanceClearDate" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="LocalPhoneNo" ColumnName="LocalPhoneNo" />
+                <ScalarProperty Name="HomeMobile" ColumnName="HomeMobile" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="HomeEmail" ColumnName="HomeEmail" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
