@@ -51,7 +51,7 @@ Public Class HomeController
         Return View(Work)
 
     End Function
-
+    ' good coding....
     Public Function GetEmployees(Optional ByVal ID As String = "1") As JsonResult
     Dim num As Integer = Convert.ToInt32(ID)
     'Dim emps  = Me._FPC_DBEntities.FPC_Employees.Where(Function(e) ID = e.DepID _
