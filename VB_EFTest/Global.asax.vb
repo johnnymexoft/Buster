@@ -1,5 +1,5 @@
 ﻿Imports System.Web.Optimization
-
+'hello
 Public Class MvcApplication
     Inherits System.Web.HttpApplication
 
